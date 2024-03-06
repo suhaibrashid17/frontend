@@ -19,6 +19,7 @@ export const createUserAsync = createAsyncThunk(
 export const checkUserAsync = createAsyncThunk(
   "user/checkUser",
   async (loginInfo) => {
+    console.log({loginInfoSlice:loginInfo});
     const response = await checkUser(loginInfo);
     // The value we return becomes the `fulfilled` action payload
     return response.data;
@@ -54,4 +55,5 @@ export const authSlice = createSlice({
 
 export const selectLoggedInUser = (state) => state.auth.loggedInUser;
 export const selectErrors = (state) => state.auth.error;
+export const selectStatus = (state) => state.auth.status;
 export default authSlice.reducer;
